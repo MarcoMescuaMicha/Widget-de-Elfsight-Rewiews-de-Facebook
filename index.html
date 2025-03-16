@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget de Reseñas de Facebook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="reviews-widget">
+        <h3>Reseñas de Facebook</h3>
+        <div id="login-button"></div>
+        <div id="reviews-list"></div>
+    </div>
+
+    <!-- SDK de Facebook -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '859917739593793', // Reemplaza con tu App ID
+                cookie: true,
+                xfbml: true,
+                version: 'v19.0'
+            });
+
+            // Verificar el estado de inicio de sesión después de inicializar el SDK
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    fetchReviews();
+                } else {
+                    // Mostrar el botón de inicio de sesión
+                    document.getElementById('login-button').innerHTML = `
+                        <button onclick="login()">Iniciar sesión con Facebook</button>
+                    `;
+                }
+            });
+        };
+
+        // Función para iniciar sesión
+        function login() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    fetchReviews();
+                }
+            }, { scope: 'pages_read_engagement,pages_show_list' });
+        }
+
+        // Cargar el SDK de Facebook
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/es_LA/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Tu script personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
