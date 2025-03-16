@@ -13,7 +13,7 @@ Este widget muestra las reseñas de una página de Facebook usando el SDK de Fac
    ```bash
    git clone https://github.com/MarcoMescuaMicha/Widget-de-Elfsight-Rewiews-de-Facebook.git
    cd Widget-de-Elfsight-Rewiews-de-Facebook
-   Configura tu App ID:
+
 2. **Configura tu App ID**:
 Abre index.html y reemplaza TU_APP_ID con el App ID de tu aplicación.
 
