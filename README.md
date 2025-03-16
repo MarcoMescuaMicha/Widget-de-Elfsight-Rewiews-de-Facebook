@@ -37,5 +37,7 @@ En "Configuración" > "Dominios de la aplicación", agrega el dominio de ngrok (
 -Inicia sesión con Facebook para ver las reseñas.
 
 ## LINK DE PRUEBA 
+https://98f0-38-172-129-97.ngrok-free.app
+http://localhost:5500 
 
-https://b678-38-172-129-97.ngrok-free.app
+
