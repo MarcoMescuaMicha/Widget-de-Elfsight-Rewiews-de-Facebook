@@ -37,6 +37,6 @@ En "Configuración" > "Dominios de la aplicación", agrega el dominio de ngrok (
 -Inicia sesión con Facebook para ver las reseñas.
 
 ## LINK DE PRUEBA 
-https://98f0-38-172-129-97.ngrok-free.app/
+https://marcomescuamicha.github.io/Widget-de-Elfsight-Rewiews-de-Facebook/
 
 
