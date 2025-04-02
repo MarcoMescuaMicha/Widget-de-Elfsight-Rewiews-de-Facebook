@@ -35,14 +35,19 @@ async function fetchReviews() {
                 // Mostrar las reseñas en el widget
                 showReviews(reviews);
             } else {
-                document.getElementById('reviews-list').innerHTML = "<p>No hay reseñas disponibles.</p>";
+                document.getElementById('reviews-list').innerHTML = 
+                    `<div class="alert alert-info text-center">No hay reseñas disponibles.</div>`;
             }
         } else {
-            document.getElementById('reviews-list').innerHTML = "<p>No tienes páginas administradas.</p>";
+            document.getElementById('reviews-list').innerHTML = 
+                 `<div class="alert alert-warning text-center">No tienes páginas administradas.</div>`;
+
         }
     } catch (error) {
         console.error("Error al obtener reseñas:", error);
-        document.getElementById('reviews-list').innerHTML = `<p>Error al obtener reseñas: ${error.message || error}</p>`;
+        document.getElementById('reviews-list').innerHTML = 
+             `<div class="alert alert-danger text-center">Error al obtener reseñas: ${error.message || error}</div>`;
+
     }
 }
 
@@ -52,14 +57,16 @@ function showReviews(reviews) {
     reviewsList.innerHTML = ""; // Limpiar el contenido anterior
 
     reviews.forEach(review => {
-        const reviewDiv = document.createElement("div");
-        reviewDiv.className = "review";
-        reviewDiv.innerHTML = `
-            <div class="review-header">
-                <span class="review-author">${review.reviewer?.name || "Usuario desconocido"}</span>
-                <span class="review-rating">${"⭐".repeat(review.rating || 0)}</span>
+          const reviewHTML = `
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="mb-0">${review.reviewer?.name || "Usuario desconocido"}</h5>
+                        <small class="text-warning">${"⭐".repeat(review.rating || 0)}</small>
+                    </div>
+                    <p class="text-muted mb-0">${review.review_text || "Sin comentario"}</p>
+                </div>
             </div>
-            <p class="review-comment">${review.review_text || "Sin comentario"}</p>
         `;
         reviewsList.appendChild(reviewDiv);
     });
